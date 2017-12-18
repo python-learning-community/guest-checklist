@@ -10,27 +10,19 @@ print('''
         ''')
 print('\nBut before you enter, we have to make sure you satify all our conditions')
 
+
 def harvardStudent():
-    schResponse = ''
     yourSchool = input('\nEnter the name of the school you attend: ')
     yourSchool = yourSchool.lower()
-    if 'harvard' in yourSchool:
-        schResponse = True
-    else:
-        schResponse = False
-    return schResponse
+    return 'harvard' in yourSchool
+
 
 def ageRange():
-    ageResponse = ''
     age = int(input('\nEnter your age: '))
-    if age in range(19,25):
-        ageResponse = True
-    else:
-        ageResponse = False
-    return ageResponse
+    return age in range(19, 25)
+
 
 def withSomeone():
-    response = ''
     withDate = input('\nAre you with a date?(Yes/No)')
     withDate = withDate.lower()
     if withDate == 'yes':
@@ -38,11 +30,7 @@ def withSomeone():
         dateGender = dateGender.lower()
         if dateGender == 'yes':
             dateRate = int(input('On a scale of 1-10 how would you rate your date?'))
-            if dateRate > 7:
-                response = True
-    else:
-        response = False
-    return response
+            return dateRate > 7
 
 
 def guestList():
@@ -51,11 +39,14 @@ def guestList():
     ageResponse = ageRange()
     dateResponse = withSomeone()
 
-    if schResponse is True and ageResponse is True and dateResponse is True:
-        print('We have been expecting you,{}'.format(yourName))
+    if schResponse and ageResponse and dateResponse:
+        print('We have been expecting you, {}'.format(yourName))
     else:
         print('Sorry, you are not allowed into this party')
-guestList()
+
+
+if __name__ == '__main__':
+    guestList()
 
 
     
